@@ -1,4 +1,4 @@
-Package: industtry
+Package: scrutr
 Title: A Toolkit for Structured Datasets Exploitation
 Version: 0.3.0
 Authors@R:
@@ -10,8 +10,8 @@ Description: A set of functions for exploiting collections of structured
     helpers. Designed for workflows involving multiple related datasets
     with a common structure.
 License: MIT + file LICENSE
-URL: https://github.com/danielrak/industtry
-BugReports: https://github.com/danielrak/industtry/issues
+URL: https://github.com/danielrak/scrutr
+BugReports: https://github.com/danielrak/scrutr/issues
 Imports:
     dplyr,
     glue,

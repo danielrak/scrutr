@@ -13,7 +13,7 @@
 #' @export
 #'
 #' @examples
-#' mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+#' mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
 #'
 #' mask <- data.frame(
 #'   folder_path = rep(mydir, 2),

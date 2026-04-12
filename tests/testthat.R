@@ -1,4 +1,4 @@
 library(testthat)
-library(industtry)
+library(scrutr)
 
-test_check("industtry")
+test_check("scrutr")

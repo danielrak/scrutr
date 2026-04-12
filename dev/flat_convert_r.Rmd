@@ -149,7 +149,7 @@ convert_r <- function (mask_filepath, output_path) {
 ```{r examples-convert_r}
 library(magrittr)
 
-mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
 
 # Datasets to convert (one-shot):
 # rio::export(cars, file.path(mydir, "original_cars.rds"))
@@ -185,7 +185,7 @@ test_that("Valid outputs are consistent", {
 
   library(magrittr)
 
-  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
 
   # Create an artificial compatible mask with R:
   mask <- data.frame(
@@ -215,7 +215,7 @@ test_that("Errors are consistent", {
 
   library(magrittr)
   
-  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
   
   expect_error(
     convert_r("~/noexist/mask_convert_r.xlsx", 

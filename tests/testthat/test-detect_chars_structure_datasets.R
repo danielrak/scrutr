@@ -2,7 +2,7 @@
 
 test_that("Valid outputs are consistent", {
 
-  mydir <- system.file("detect_chars_structure_datasets", package = "industtry")
+  mydir <- system.file("detect_chars_structure_datasets", package = "scrutr")
 
   detect <- detect_chars_structure_datasets(
   datasets_folderpath = mydir,
@@ -46,7 +46,7 @@ test_that("Valid outputs are consistent", {
 
 test_that("Errors are consistent", {
   
-  mydir <- system.file("detect_chars_structure_datasets", package = "industtry")
+  mydir <- system.file("detect_chars_structure_datasets", package = "scrutr")
   
   expect_error(detect_chars_structure_datasets(datasets_folderpath = "noexist"),
                regexp = "datasets_folderpath must be a valid folder path")

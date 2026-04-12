@@ -1,5 +1,5 @@
 test_that("convert_all converts files correctly", {
-  mydir <- system.file("permadir_examples_and_tests/convert_all", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_all", package = "scrutr")
   outdir <- file.path(tempdir(), "test_convert_all")
   dir.create(outdir, showWarnings = FALSE)
   on.exit(unlink(outdir, recursive = TRUE))
@@ -34,7 +34,7 @@ test_that("convert_all errors on invalid input", {
   expect_error(convert_all(input_folderpath = "noexist"),
                "input_folderpath must be a valid path")
 
-  mydir <- system.file("permadir_examples_and_tests/convert_all", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_all", package = "scrutr")
 
   expect_error(convert_all(input_folderpath = mydir, considered_extensions = 1),
                "considered_extensions must be a character vector")

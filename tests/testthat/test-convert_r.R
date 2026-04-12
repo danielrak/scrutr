@@ -1,5 +1,5 @@
 test_that("convert_r converts files correctly", {
-  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
   outdir <- file.path(tempdir(), "test_convert_r")
   dir.create(outdir, showWarnings = FALSE)
   on.exit(unlink(outdir, recursive = TRUE))
@@ -25,7 +25,7 @@ test_that("convert_r converts files correctly", {
 })
 
 test_that("convert_r handles to_convert filter", {
-  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
   outdir <- file.path(tempdir(), "test_convert_r_filter")
   dir.create(outdir, showWarnings = FALSE)
   on.exit(unlink(outdir, recursive = TRUE))
@@ -46,7 +46,7 @@ test_that("convert_r handles to_convert filter", {
 })
 
 test_that("convert_r handles empty mask", {
-  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
   outdir <- file.path(tempdir(), "test_convert_r_empty")
   dir.create(outdir, showWarnings = FALSE)
   on.exit(unlink(outdir, recursive = TRUE))
@@ -70,7 +70,7 @@ test_that("convert_r errors on invalid paths", {
     "mask_filepath doesn't exist"
   )
 
-  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
   mask <- data.frame(
     folder_path = mydir,
     file = "original_cars.rds",

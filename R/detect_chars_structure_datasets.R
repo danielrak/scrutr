@@ -10,7 +10,7 @@
 #' @export
 #'
 #' @examples
-#' mydir <- system.file("detect_chars_structure_datasets", package = "industtry")
+#' mydir <- system.file("detect_chars_structure_datasets", package = "scrutr")
 #'
 #' detect <- detect_chars_structure_datasets(
 #'   datasets_folderpath = mydir, 

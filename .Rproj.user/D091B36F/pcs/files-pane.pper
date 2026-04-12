@@ -2,8 +2,8 @@
     "sortOrder": [
         {
             "columnIndex": 2,
-            "ascending": false
+            "ascending": true
         }
     ],
-    "path": "C:/industtry_refactory"
+    "path": "C:/industtry_refactory/man"
 }

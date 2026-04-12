@@ -64,7 +64,7 @@ parallel_import <- function (file_paths) {
 ```
   
 ```{r example-parallel_import}
-mydir <- system.file("permadir_examples_and_tests/importations", package = "industtry")
+mydir <- system.file("permadir_examples_and_tests/importations", package = "scrutr")
 lfiles <- list.files(mydir, full.names = TRUE)
 
 if (isTRUE(rstudioapi::isAvailable())) {
@@ -83,7 +83,7 @@ test_that("Valid outputs are consistent", {
 
 test_that("Errors are consistent", {
   
-  mydir <- system.file("permadir_examples_and_tests/importations", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/importations", package = "scrutr")
   lfiles_nodupl_invalid <- c(list.files(mydir, full.names = TRUE), 
                              file.path(mydir, "novalid", "cars2.rds"))
   lfiles <- list.files(mydir, recursive = TRUE, full.names = TRUE)
@@ -146,7 +146,7 @@ serial_import <- function (file_paths) {
   
 ```{r example-serial_import}
 library(magrittr)
-mydir <- system.file("permadir_examples_and_tests/importations", package = "industtry")
+mydir <- system.file("permadir_examples_and_tests/importations", package = "scrutr")
 lfiles <- list.files(mydir, full.names = TRUE) %>% 
   (\(x) x[stringr::str_detect(x, "\\.rds$")])
 
@@ -159,7 +159,7 @@ serial_import(lfiles)
 test_that("Valid outputs are consistent", {
 
   library(magrittr)
-  mydir <- system.file("permadir_examples_and_tests/importations", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/importations", package = "scrutr")
   lfiles <- list.files(mydir, full.names = TRUE) %>% 
     (\(x) x[stringr::str_detect(x, "\\.rds$")])
 
@@ -170,7 +170,7 @@ test_that("Valid outputs are consistent", {
 
 test_that("Errors are consistent", {
   
-  mydir <- system.file("permadir_examples_and_tests/importations", package = "industtry")
+  mydir <- system.file("permadir_examples_and_tests/importations", package = "scrutr")
   lfiles_nodupl_invalid <- c(list.files(mydir, full.names = TRUE), 
                              file.path(mydir, "novalid", "cars2.rds"))
   lfiles <- list.files(mydir, recursive = TRUE, full.names = TRUE)

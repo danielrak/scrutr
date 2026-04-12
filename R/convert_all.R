@@ -15,7 +15,7 @@
 #'
 #' @examples
 #' \donttest{
-#' mydir <- system.file("permadir_examples_and_tests/convert_all", package = "industtry")
+#' mydir <- system.file("permadir_examples_and_tests/convert_all", package = "scrutr")
 #' outdir <- tempdir()
 #'
 #' convert_all(input_folderpath = mydir,
