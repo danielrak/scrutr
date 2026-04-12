@@ -22,7 +22,7 @@ re-export each file in the desired format. Cleaning includes replacing void
 character values (\code{""}) with \code{NA} and trimming whitespace.
 }
 \examples{
-mydir <- system.file("permadir_examples_and_tests/convert_r", package = "industtry")
+mydir <- system.file("permadir_examples_and_tests/convert_r", package = "scrutr")
 
 mask <- data.frame(
   folder_path = rep(mydir, 2),

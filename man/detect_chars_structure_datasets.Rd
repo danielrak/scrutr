@@ -28,7 +28,7 @@ detect_chars_structure_datasets(
 Detect character structure from datasets
 }
 \examples{
-mydir <- system.file("detect_chars_structure_datasets", package = "industtry")
+mydir <- system.file("detect_chars_structure_datasets", package = "scrutr")
 
 detect <- detect_chars_structure_datasets(
   datasets_folderpath = mydir, 
