@@ -45,12 +45,8 @@ writexl::write_xlsx(mask, file.path(mydir, "mask_rename_r.xlsx"))
 
 # Apply the rename function: 
 rename_r(mask_filepath = file.path(mydir, "mask_rename_r.xlsx"))
-#> $cars.rds
-#> [1] TRUE
-#> 
-#> $mtcars.rds
-#> [1] TRUE
-#> 
+#> Renamed: cars.rds -> cars_renamed.rds
+#> Renamed: mtcars.rds -> mtcars_renamed.rds
 
 # See the renamed files: 
 list.files(mydir)
