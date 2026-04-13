@@ -54,25 +54,37 @@ convert_r <- function(mask_filepath, output_path) {
   }
 
   out_paths <- character(nrow(prm))
+  errors <- character(0)
 
   for (i in seq_len(nrow(prm))) {
     row <- prm[i, ]
     message("Converting: ", row$file)
 
-    data <- rio::import(file.path(row$folder_path, row$file), trust = TRUE)
-    data <- dplyr::mutate(data, dplyr::across(
-      dplyr::everything(),
-      \(y) { y[nchar(as.character(y)) == 0] <- NA; y }
-    ))
-    data <- dplyr::mutate(data, dplyr::across(
-      dplyr::where(is.character),
-      stringr::str_trim
-    ))
+    tryCatch({
+      data <- rio::import(file.path(row$folder_path, row$file), trust = TRUE)
+      data <- dplyr::mutate(data, dplyr::across(
+        dplyr::everything(),
+        \(y) { y[nchar(as.character(y)) == 0] <- NA; y }
+      ))
+      data <- dplyr::mutate(data, dplyr::across(
+        dplyr::where(is.character),
+        stringr::str_trim
+      ))
 
-    out_file <- file.path(output_path, row$converted_file)
-    rio::export(data, out_file)
-    out_paths[i] <- out_file
-    message("  Done: ", row$converted_file)
+      out_file <- file.path(output_path, row$converted_file)
+      rio::export(data, out_file)
+      out_paths[i] <- out_file
+      message("  Done: ", row$converted_file)
+    }, error = function(e) {
+      errors <<- c(errors, row$file)
+      warning("  Failed: ", row$file, " - ", conditionMessage(e),
+              call. = FALSE)
+    })
+  }
+
+  if (length(errors) > 0) {
+    warning(length(errors), " file(s) failed: ",
+            paste(errors, collapse = ", "), call. = FALSE)
   }
 
   invisible(out_paths)
