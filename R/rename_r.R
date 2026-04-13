@@ -52,11 +52,31 @@ rename_r <- function(mask_filepath){
   prm <- prm[prm$to_rename == 1, ]
   prm[["row_number"]] <- 1:nrow(prm)
   
-  sp <- split(prm, prm[["row_number"]])
-  names(sp) <- paste0(basename(prm[["file"]]))
-  
-  purrr::map(sp, \(x) 
-             file.rename(
-               file.path(dirname(mask_filepath), x[["file"]]), 
-               file.path(dirname(mask_filepath), x[["renamed_file"]])))
+  mask_dir <- dirname(mask_filepath)
+  errors <- character(0)
+
+  results <- purrr::map(seq_len(nrow(prm)), \(i) {
+    row <- prm[i, ]
+    tryCatch({
+      ok <- file.rename(
+        file.path(mask_dir, row[["file"]]),
+        file.path(mask_dir, row[["renamed_file"]])
+      )
+      if (!ok) stop("file.rename returned FALSE")
+      message("Renamed: ", row[["file"]], " -> ", row[["renamed_file"]])
+      TRUE
+    }, error = function(e) {
+      errors <<- c(errors, row[["file"]])
+      warning("  Failed: ", row[["file"]], " - ", conditionMessage(e),
+              call. = FALSE)
+      FALSE
+    })
+  })
+
+  if (length(errors) > 0) {
+    warning(length(errors), " file(s) failed: ",
+            paste(errors, collapse = ", "), call. = FALSE)
+  }
+
+  invisible(results)
 }
