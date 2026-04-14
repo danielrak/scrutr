@@ -4,7 +4,13 @@
 \alias{inspect_vars}
 \title{Inspect a collection of datasets}
 \usage{
-inspect_vars(input_path, output_path, output_label, considered_extensions)
+inspect_vars(
+  input_path,
+  output_path,
+  output_label,
+  considered_extensions,
+  encoding = NULL
+)
 }
 \arguments{
 \item{input_path}{Character. Folder path containing datasets to explore.}
@@ -15,6 +21,12 @@ inspect_vars(input_path, output_path, output_label, considered_extensions)
 
 \item{considered_extensions}{Character vector. File extensions to include
 (without the dot, e.g. \code{"rds"} not \code{".rds"}).}
+
+\item{encoding}{Character 1L or \code{NULL}. Encoding passed to
+\code{rio::import()} for text-based formats (CSV, TSV). Must be one of
+\code{"unknown"}, \code{"UTF-8"}, or \code{"Latin-1"}. Defaults to
+\code{NULL} (let \code{rio} / \code{data.table} pick the default).
+Ignored for binary formats (e.g. RDS, xlsx).}
 }
 \value{
 Invisibly returns the path to the written Excel file.
