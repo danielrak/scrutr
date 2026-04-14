@@ -8,14 +8,20 @@ has been released on CRAN.
 
 ## Test environments
 
-- Local: Windows 11, R-release
-- GitHub Actions: ubuntu-latest, macOS-latest, windows-latest (all R-release)
-- win-builder: R-devel, R-release (TODO before submission)
-- R-hub v2: linux (R-devel), macos (R-release), windows (R-release) (TODO before submission)
+- Local: Windows 11, R 4.5.x
+- GitHub Actions: ubuntu-latest, macOS-latest, windows-latest (R-release)
+- win-builder: R-release (R 4.5.3) and R-devel (R 4.6.0 beta)
+- R-hub v2: linux, macos-arm64, windows (R-devel / R-release)
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 note
+
+* checking CRAN incoming feasibility ... NOTE
+  Maintainer: 'Daniel Rakotomalala <rakdanielh@gmail.com>'
+  New submission
+
+This NOTE is expected for a first submission.
 
 ## Downstream dependencies
 
