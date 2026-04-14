@@ -44,9 +44,13 @@ detect_chars_structure_datasets <- function (
   lfiles <- lfiles[grepl(ext, lfiles)]
   
   data_list <- lapply(lfiles, \(x) {
-    
+
     dataname <- basename(x)
     data <- rio::import(x, trust = TRUE)
+    # Coerce all columns to character so detect_chars_structure (which
+    # requires character input) can be applied to every variable.
+    data <- dplyr::mutate(data, dplyr::across(
+      dplyr::everything(), as.character))
     data
   })
   
