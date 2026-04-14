@@ -15,7 +15,7 @@
 - `convert_all()` is now synchronous (no longer requires RStudio background jobs).
 - `inspect()` collapses multi-element class vectors (e.g. `ordered/factor`) into a single string per variable.
 - `path_move()` uses `fixed = TRUE` in `strsplit()` for correct separator handling.
-- Modernised deprecated `dplyr::mutate_if()`/`mutate_all()` to `dplyr::across()`.
+- Modernized deprecated `dplyr::mutate_if()`/`mutate_all()` to `dplyr::across()`.
 - Comprehensive test suite rewritten for the new API.
 
 # scrutr 0.2.0
@@ -26,7 +26,7 @@
 
 # scrutr 0.1.0
 
-Dev enchancements : 
+Development enhancements:
 
 - Add examples and tests as far as possible. 
 - Correction of warnings and notes. 

@@ -6,7 +6,7 @@
 [![Codecov test coverage](https://codecov.io/gh/danielrak/scrutrbase/branch/main/graph/badge.svg)](https://app.codecov.io/gh/danielrak/scrutrbase?branch=main)
 <!-- badges: end -->
 
-`scrutr` is an R toolkit for **scrutinising collections of structured datasets** (data frames). It targets workflows where you need to apply the same inspection, profiling, or conversion procedure across many related tables.
+`scrutr` is an R toolkit for **scrutinizing collections of structured datasets** (data frames). It targets workflows where you need to apply the same inspection, profiling, or conversion procedure across many related tables.
 
 Two guiding ideas:
 

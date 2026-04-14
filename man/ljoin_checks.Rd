@@ -11,7 +11,7 @@ ljoin_checks(ltable, rtable, ...)
 
 \item{rtable}{Data.frame. Right data frame in the join}
 
-\item{...}{Params. Any other arguments of dplyr::left_join()}
+\item{...}{Any other arguments passed to \code{dplyr::left_join()}.}
 }
 \value{
 Data.frame. Output of dplyr::left_join() with messages on number of observations

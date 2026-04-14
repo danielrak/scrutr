@@ -4,7 +4,7 @@
 #'
 #' Combines base::table() and base::prop.table() outputs in a single one
 #'
-#' @param ... Params. Arguments passed to base::table()
+#' @param ... Arguments passed to \code{base::table()}.
 #' @param margin Integer 1L. The same argument as in base::prop.table()
 #' @param round Integer 1L. Number of digits after decimal in base::prop.table() output
 #' @param noquote Logical 1L. If TRUE, return an object of class noquote that provides better view of the output

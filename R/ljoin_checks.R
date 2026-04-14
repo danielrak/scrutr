@@ -4,7 +4,7 @@
 #'
 #' @param ltable Data.frame. Left data frame in the join
 #' @param rtable Data.frame. Right data frame in the join
-#' @param ... Params. Any other arguments of dplyr::left_join()
+#' @param ... Any other arguments passed to \code{dplyr::left_join()}.
 #' @return Data.frame. Output of dplyr::left_join() with messages on number of observations
 #' in left, right and joined data frames and list of common variables between
 #' ltable and rtable

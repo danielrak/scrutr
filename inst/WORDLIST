@@ -1,0 +1,16 @@
+allsame
+CMD
+Codecov
+compclasses
+dplyr
+dupl
+filesystem
+ljoin
+ltable
+noquote
+rio
+RStudio
+rtable
+tibble
+TSV
+xlsx

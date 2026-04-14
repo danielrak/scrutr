@@ -12,7 +12,7 @@ folder_structure_replicate(dir, to)
 \item{to}{Character 1L. Path of an output directory in which replicated structured will be placed}
 }
 \value{
-See directory indicated in \code{to} arg.
+See directory indicated in the \code{to} argument.
 }
 \description{
 Replicate the folder structure of a given directory

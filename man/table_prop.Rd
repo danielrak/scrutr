@@ -7,7 +7,7 @@
 table_prop(..., margin = NULL, round = 3, noquote = FALSE)
 }
 \arguments{
-\item{...}{Params. Arguments passed to base::table()}
+\item{...}{Arguments passed to \code{base::table()}.}
 
 \item{margin}{Integer 1L. The same argument as in base::prop.table()}
 
