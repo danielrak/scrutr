@@ -10,7 +10,9 @@ replace_multiple(input_vector, replacements, replace_all = FALSE)
 \item{input_vector}{Character. Character vector on which replacements take place.}
 
 \item{replacements}{Character. Named character vector defining replacement
-correspondences (names = patterns, values = replacements).}
+correspondences (names = patterns, values = replacements). Names are
+treated as literal strings (regex metacharacters such as \code{.},
+\code{(}, \code{+} are not interpreted).}
 
 \item{replace_all}{Logical. If \code{TRUE}, \code{stringr::str_replace_all()}
 is used instead of \code{stringr::str_replace()}.}
@@ -19,8 +21,19 @@ is used instead of \code{stringr::str_replace()}.}
 Character vector with replacements applied.
 }
 \description{
-Replace character vector values using a correspondence approach
+Names of \code{replacements} are matched literally (not as regular
+expressions). Elements of \code{input_vector} that match none of the
+patterns are returned unchanged.
 }
+\section{Overlapping patterns}{
+
+When several patterns can match the same element, the first match found
+in \code{input_vector} (scanned left to right) is used. When patterns
+start at the same position, the one listed first in \code{replacements}
+wins, not the longest. Order \code{replacements} accordingly if some
+patterns are prefixes of others.
+}
+
 \examples{
 input <- c("one-one", "two-two-one", "three-three-two")
 
@@ -34,4 +47,10 @@ replace_multiple(input,
                    c("one" = "1", "two" = "2",
                      "three" = "3"),
                  replace_all = TRUE)
+
+# Unmatched elements are returned as-is:
+replace_multiple(c("one", "unmatched"), c("one" = "1"))
+
+# Regex metacharacters are matched literally:
+replace_multiple(c("a.b", "aXb"), c("." = "DOT"))
 }
