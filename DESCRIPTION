@@ -1,14 +1,13 @@
 Package: scrutr
-Title: A Toolkit for Structured Datasets Exploitation
+Title: Tools for Scrutinizing Collections of Structured Datasets
 Version: 0.3.0
 Authors@R:
     person("Daniel", "Rakotomalala", , "rakdanielh@gmail.com", role = c("aut", "cre"))
-Description: A set of functions for exploiting collections of structured
-    datasets (data frames) at scale. Core capabilities include batch
-    inspection and profiling, variable presence detection across datasets,
-    type consistency checking, format conversion, and file management
-    helpers. Designed for workflows involving multiple related datasets
-    with a common structure.
+Description: Provides a coherent interface for exploring and transforming
+    multiple related data frames that share a common structure. Complements
+    single-dataset inspection tools by operating across an entire collection
+    at once. Also includes lightweight utilities for related file and folder
+    management tasks.
 License: MIT + file LICENSE
 URL: https://github.com/danielrak/scrutr
 BugReports: https://github.com/danielrak/scrutr/issues
