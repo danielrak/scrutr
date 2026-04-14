@@ -8,6 +8,11 @@
 #' @param output_label Character. A concise label for the output file name.
 #' @param considered_extensions Character vector. File extensions to include
 #'   (without the dot, e.g. \code{"rds"} not \code{".rds"}).
+#' @param encoding Character 1L or \code{NULL}. Encoding passed to
+#'   \code{rio::import()} for text-based formats (CSV, TSV). Must be one of
+#'   \code{"unknown"}, \code{"UTF-8"}, or \code{"Latin-1"}. Defaults to
+#'   \code{NULL} (let \code{rio} / \code{data.table} pick the default).
+#'   Ignored for binary formats (e.g. RDS, xlsx).
 #' @return Invisibly returns the path to the written Excel file.
 #'   The file contains sheets: dims, inspect_tot, one per dataset inspection,
 #'   vars_detect, vars_detect_everywhere, vars_detect_not_everywhere,
@@ -34,7 +39,13 @@
 #' @export
 #'
 inspect_vars <- function(input_path, output_path,
-                         output_label, considered_extensions) {
+                         output_label, considered_extensions,
+                         encoding = NULL) {
+
+  if (!is.null(encoding) &&
+      !encoding %in% c("unknown", "UTF-8", "Latin-1")) {
+    stop("encoding must be NULL or one of 'unknown', 'UTF-8', 'Latin-1'")
+  }
 
   # Build file list
   ext <- paste0("\\.", considered_extensions, "$") %>%
@@ -46,11 +57,21 @@ inspect_vars <- function(input_path, output_path,
     stop("No files found in input_path matching the specified extensions")
   }
 
-  # Import all datasets into a LOCAL named list (no global env pollution)
-  datasets <- purrr::map(
-    lfiles,
-    \(f) rio::import(file.path(input_path, f), encoding = "latin1", trust = TRUE)
-  ) %>%
+  # Import all datasets into a LOCAL named list (no global env pollution).
+  # Encoding is only forwarded when the user set it explicitly AND the file
+  # is a text-based format; otherwise rio uses its own defaults.
+  text_exts <- c("csv", "tsv", "txt", "csv2", "psv")
+  import_one <- function(f) {
+    fpath <- file.path(input_path, f)
+    f_ext <- tolower(tools::file_ext(f))
+    if (!is.null(encoding) && f_ext %in% text_exts) {
+      rio::import(fpath, encoding = encoding, trust = TRUE)
+    } else {
+      rio::import(fpath, trust = TRUE)
+    }
+  }
+
+  datasets <- purrr::map(lfiles, import_one) %>%
     stats::setNames(lfiles)
 
   # Clean names (without extension) for labeling
