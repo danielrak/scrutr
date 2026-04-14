@@ -1,6 +1,8 @@
 # Replace character vector values using a correspondence approach
 
-Replace character vector values using a correspondence approach
+Names of `replacements` are matched literally (not as regular
+expressions). Elements of `input_vector` that match none of the patterns
+are returned unchanged.
 
 ## Usage
 
@@ -17,7 +19,9 @@ replace_multiple(input_vector, replacements, replace_all = FALSE)
 - replacements:
 
   Character. Named character vector defining replacement correspondences
-  (names = patterns, values = replacements).
+  (names = patterns, values = replacements). Names are treated as
+  literal strings (regex metacharacters such as `.`, `(`, `+` are not
+  interpreted).
 
 - replace_all:
 
@@ -29,6 +33,14 @@ replace_multiple(input_vector, replacements, replace_all = FALSE)
 ## Value
 
 Character vector with replacements applied.
+
+## Overlapping patterns
+
+When several patterns can match the same element, the first match found
+in `input_vector` (scanned left to right) is used. When patterns start
+at the same position, the one listed first in `replacements` wins, not
+the longest. Order `replacements` accordingly if some patterns are
+prefixes of others.
 
 ## Examples
 
@@ -47,4 +59,12 @@ replace_multiple(input,
                      "three" = "3"),
                  replace_all = TRUE)
 #> [1] "1-1"     "2-2-one" "3-3-two"
+
+# Unmatched elements are returned as-is:
+replace_multiple(c("one", "unmatched"), c("one" = "1"))
+#> [1] "1"         "unmatched"
+
+# Regex metacharacters are matched literally:
+replace_multiple(c("a.b", "aXb"), c("." = "DOT"))
+#> [1] "aDOTb" "aXb"  
 ```
