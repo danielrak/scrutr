@@ -55,16 +55,18 @@ invisibly and is called for its side effect of writing the RDS file.
 
 ``` r
 mydir <- system.file("detect_chars_structure_datasets", package = "scrutr")
+outfile <- file.path(tempdir(), "detect_college.rds")
 
 detect <- detect_chars_structure_datasets(
-  datasets_folderpath = mydir, 
-  considered_extensions = "xlsx", 
-  patterns = "(?i)college", 
-  output_filepath = file.path(mydir, "detect_college.rds"), 
+  datasets_folderpath = mydir,
+  considered_extensions = "xlsx",
+  patterns = "(?i)college",
+  output_filepath = outfile,
   get_output_in_session = TRUE)
 
 # head(lapply(detect, head))
 
-file.exists(file.path(mydir, "detect_college.rds"))
+file.exists(outfile)
 #> [1] TRUE
+unlink(outfile)
 ```

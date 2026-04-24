@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">scrutr</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,18 +90,20 @@ If <code>get_output_in_session</code> is <code>FALSE</code>, the function return
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">mydir</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"detect_chars_structure_datasets"</span>, package <span class="op">=</span> <span class="st">"scrutr"</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">outfile</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/tempfile.html" class="external-link">tempdir</a></span><span class="op">(</span><span class="op">)</span>, <span class="st">"detect_college.rds"</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">detect</span> <span class="op">&lt;-</span> <span class="fu">detect_chars_structure_datasets</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  datasets_folderpath <span class="op">=</span> <span class="va">mydir</span>, </span></span>
-<span class="r-in"><span>  considered_extensions <span class="op">=</span> <span class="st">"xlsx"</span>, </span></span>
-<span class="r-in"><span>  patterns <span class="op">=</span> <span class="st">"(?i)college"</span>, </span></span>
-<span class="r-in"><span>  output_filepath <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">mydir</span>, <span class="st">"detect_college.rds"</span><span class="op">)</span>, </span></span>
+<span class="r-in"><span>  datasets_folderpath <span class="op">=</span> <span class="va">mydir</span>,</span></span>
+<span class="r-in"><span>  considered_extensions <span class="op">=</span> <span class="st">"xlsx"</span>,</span></span>
+<span class="r-in"><span>  patterns <span class="op">=</span> <span class="st">"(?i)college"</span>,</span></span>
+<span class="r-in"><span>  output_filepath <span class="op">=</span> <span class="va">outfile</span>,</span></span>
 <span class="r-in"><span>  get_output_in_session <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># head(lapply(detect, head))</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/file.path.html" class="external-link">file.path</a></span><span class="op">(</span><span class="va">mydir</span>, <span class="st">"detect_college.rds"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/files.html" class="external-link">file.exists</a></span><span class="op">(</span><span class="va">outfile</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> [1] TRUE</span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/base/unlink.html" class="external-link">unlink</a></span><span class="op">(</span><span class="va">outfile</span><span class="op">)</span></span></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
